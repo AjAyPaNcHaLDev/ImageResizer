@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/files"
+        android:enabled="true"
+        android:icon="@drawable/filemanager"
+        android:title="Files"/>
+    <item
+        android:id="@+id/camera"
+        android:enabled="true"
+        android:icon="@drawable/camera"
+        android:title="camera"
+
+        />
+
+</menu>
