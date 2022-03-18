@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">ImageResizer</string>
     <string name="alarms_destination_label">Alarm</string>
     <string name="schedule_destination_label">schedule</string>
     <string name="timer_destination_label">timer</string>

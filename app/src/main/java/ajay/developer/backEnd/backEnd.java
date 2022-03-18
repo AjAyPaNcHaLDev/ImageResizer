@@ -2,6 +2,8 @@ package ajay.developer.backEnd;
 
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,7 +19,7 @@ import ajay.developer.Params.parms;
 public  class backEnd  extends  AppCompatActivity  {
 
 
-    public void backEnd(Activity k){
+    public  backEnd(Activity activity, Context context){
 
 
 
@@ -25,7 +27,8 @@ public  class backEnd  extends  AppCompatActivity  {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(k,"file",Toast.LENGTH_SHORT).show();
+
+                new Permission(context ,activity,"storage");
 
             }
         });
@@ -33,7 +36,12 @@ public  class backEnd  extends  AppCompatActivity  {
         parms.getCamera().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(k,"camera",Toast.LENGTH_SHORT).show();
+
+                new Permission(context ,activity,"camera");
+
+                new Permission(context ,activity,"storage");
+
+
             }
         });
 

@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
+import android.util.Log;
+
 
 import ajay.developer.Params.parms;
+
 import ajay.developer.backEnd.backEnd;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,9 +20,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         parms.setFiles(findViewById(R.id.files));
         parms.setCamera(findViewById(R.id.camera));
-backEnd n=new backEnd();
-n.backEnd(MainActivity.this);
+
+new backEnd(MainActivity.this,this);
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+Log.e("TAGA","resume app");
     }
 }
