@@ -25,4 +25,13 @@ public class Utails {
      }
 
     }
+
+    public static  boolean ispermissionStatusCamera(Context context){
+
+        if(ContextCompat.checkSelfPermission( context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+       return false;
+         }else{
+return true;
+        }
+    }
 }

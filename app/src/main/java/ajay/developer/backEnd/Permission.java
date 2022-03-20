@@ -39,7 +39,7 @@ public class Permission  extends AppCompatActivity {
 
            takePermissionFile(activity);
              }else{
-            Toast.makeText(context,"permission ok",Toast.LENGTH_SHORT).show();
+               Log.e("TAGA","permission type is storage ok");
         }
            break;
        case  "camera":
@@ -99,7 +99,9 @@ public class Permission  extends AppCompatActivity {
 
         }else {
             Log.e("TAGA", "takePermissionCamera " + true);
+
         }
+
 
     }
 

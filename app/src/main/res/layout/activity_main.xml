@@ -8,8 +8,9 @@
     tools:context=".MainActivity">
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
+
     android:gravity="center">
 
 
@@ -30,7 +31,7 @@
                 android:layout_height="300dp"
                 android:id="@+id/imagePreview"
                 app:srcCompat="@drawable/ic_hollowed_boxes"
-                android:contentDescription="content_description_media"
+                android:contentDescription="@string/content_description_media"
                 />
 
 
@@ -49,73 +50,107 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:hint="Enter File Name"
+                    android:id="@+id/fileName"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="?android:attr/textColorSecondary"
                     />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="113dp"
                     android:orientation="horizontal">
 
+
+                    <SeekBar
+                        android:id="@+id/seekBarQuality"
+                        android:layout_width="266dp"
+                        android:layout_height="69dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.271" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Not Required"
                         android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="#ff0000"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.974"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteY="6dp" />
+
+                    <TextView
+                        android:id="@+id/seekBarQualityLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Drag Seekbar to change Image Size."
+                        android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.057"
+                        app:layout_constraintHorizontal_bias="0.875"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.197"
+                        app:layout_constraintVertical_bias="0.643"
                         tools:ignore="MissingConstraints" />
 
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/galleryicon"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.851"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="105dp"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="112dp"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/textView"
+                        android:layout_width="176dp"
+                        android:layout_height="47dp"
                         android:text="Choose Image"
                         android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@android:color/holo_purple" />
+                        android:textColor="@android:color/holo_purple"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteY="3dp" />
+
                     <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/cameraBtn"
-                        android:text="@string/Camera"
-                        android:background="@android:color/transparent"
-                        android:textColor="@android:color/holo_green_light"
-                        android:onClick="cameraActionBtn"
-                        android:drawableLeft="@drawable/camera"/>
-                    <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/galleryBtn"
                         android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/camera"
+                        android:onClick="cameraActionBtn"
+                        android:text="@string/Camera"
                         android:textColor="@android:color/holo_green_light"
-                        android:text="@string/Gallery"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteY="33dp" />
+
+                    <Button
+                        android:id="@+id/galleryBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/gallery"
                         android:onClick="galleryActionBtn"
 
-                        android:drawableLeft="@drawable/gallery"/>
-                </LinearLayout>
+                        android:text="@string/Gallery"
+                        android:textColor="@android:color/holo_green_light"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/cameraBtn"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteY="32dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
             <!-- Buttons -->
@@ -128,13 +163,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:text="action_1"
+                    android:text="SaveFile"
+                    android:onClick="saveFileActionBtn"
                     style="?attr/borderlessButtonStyle"
                     />
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="action_2"
+                    android:text="Clear"
+                    android:onClick="clearActionBtn"
                     style="?attr/borderlessButtonStyle"
                     />
             </LinearLayout>
