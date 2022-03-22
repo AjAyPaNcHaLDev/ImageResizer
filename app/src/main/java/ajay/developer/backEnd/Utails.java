@@ -7,7 +7,13 @@ import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
+
+import java.nio.file.InvalidPathException;
+import java.nio.file.Paths;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utails {
 
@@ -26,7 +32,7 @@ public class Utails {
 
     }
 
-    public static  boolean ispermissionStatusCamera(Context context){
+    public static  boolean isPermissionGrantedCamera(Context context){
 
         if(ContextCompat.checkSelfPermission( context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
        return false;
@@ -34,4 +40,6 @@ public class Utails {
 return true;
         }
     }
+
+
 }

@@ -164,6 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="SaveFile"
+                    android:id="@+id/saveFileActionBtn"
                     android:onClick="saveFileActionBtn"
                     style="?attr/borderlessButtonStyle"
                     />

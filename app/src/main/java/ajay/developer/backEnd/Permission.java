@@ -25,7 +25,7 @@ import androidx.core.content.ContextCompat;
 import ajay.developer.ImageResizer.MainActivity;
 import ajay.developer.Params.parms;
 
-public class Permission  extends AppCompatActivity {
+public class Permission  extends AppCompatActivity  {
 
 
     public  Permission(Context context, Activity activity,String type) {
