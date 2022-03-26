@@ -17,8 +17,8 @@ import org.json.JSONObject;
 public  class parms {
 public  static Activity tempActivity;
 public  static Context tempContext;
-public  static View Files;
-public  static View Camera;
+public  static float filesSize;
+//public  static View Camera;
 public  static ImageView imagePreview;
 public  static EditText fileName;
 public  static SeekBar seekBarQuality;
@@ -26,7 +26,7 @@ public  static Bitmap originalBitmap;
 public  static Intent originalBitmapIntent;
     public  static TextView seekBarQualityLabel;
     public static Button saveFileActionBtn;
-
+public  static  float tempFileSize;
 public static  String root;
 
     public static String getRoot() {
@@ -113,19 +113,27 @@ public static  String root;
         parms.tempContext = tempContext;
     }
 
-    public static View getFiles() {
-        return Files;
+    public static float getFilesSize() {
+        return filesSize;
     }
 
-    public static void setFiles(View files) {
-        Files = files;
+    public static void setFilesSize(float filesSize) {
+        parms.filesSize = filesSize;
     }
 
-    public static View getCamera() {
-        return Camera;
+    public static float getTempFileSize() {
+        return tempFileSize;
     }
 
-    public static void setCamera(View camera) {
-        Camera = camera;
+    public static void setTempFileSize(float tempFileSize) {
+        parms.tempFileSize = tempFileSize;
     }
+    //
+//    public static View getCamera() {
+//        return Camera;
+//    }
+//
+//    public static void setCamera(View camera) {
+//        Camera = camera;
+//    }
 }

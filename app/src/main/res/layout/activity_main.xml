@@ -10,7 +10,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-
     android:gravity="center">
 
 
@@ -18,21 +17,22 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <!-- Media -->
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
                 android:id="@+id/imagePreview"
-                app:srcCompat="@drawable/ic_hollowed_boxes"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
                 android:contentDescription="@string/content_description_media"
-                />
+                app:srcCompat="@drawable/imagebackground" />
 
 
 
@@ -46,14 +46,71 @@
 
 
                 <EditText
+                    android:id="@+id/fileName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:hint="Enter File Name"
-                    android:id="@+id/fileName"
                     android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    />
+                    android:textColor="?android:attr/textColorSecondary" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="129dp"
+                    android:orientation="horizontal">
+
+
+                    <Button
+                        android:id="@+id/cameraBtn"
+                        android:layout_width="119dp"
+                        android:layout_height="67dp"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/camera"
+                        android:onClick="cameraActionBtn"
+                        android:text="@string/Camera"
+                        android:textColor="@android:color/holo_blue_dark"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.124"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.724"
+                        tools:ignore="MissingConstraints" />
+
+                    <Button
+                        android:id="@+id/galleryBtn"
+                        android:layout_width="100dp"
+                        android:layout_height="68dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/gallery"
+                        android:onClick="galleryActionBtn"
+
+                        android:text="@string/Gallery"
+                        android:textColor="@android:color/holo_blue_bright"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.54"
+                        app:layout_constraintStart_toEndOf="@+id/cameraBtn"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.721"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Not Required File Name"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="#ff066060"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.923"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.054"
+                        tools:ignore="MissingConstraints" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -67,89 +124,27 @@
                         android:layout_height="69dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintHorizontal_bias="0.494"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.271" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Not Required"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="#ff0000"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.974"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints"
-                        tools:layout_editor_absoluteY="6dp" />
+                        app:layout_constraintVertical_bias="0.59" />
 
                     <TextView
                         android:id="@+id/seekBarQualityLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Drag Seekbar to change Image Size."
+                        android:text="Select Image ."
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.875"
+                        app:layout_constraintHorizontal_bias="0.059"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.643"
+                        app:layout_constraintVertical_bias="0.074"
                         tools:ignore="MissingConstraints" />
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="105dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="176dp"
-                        android:layout_height="47dp"
-                        android:text="Choose Image"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@android:color/holo_purple"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints"
-                        tools:layout_editor_absoluteY="3dp" />
-
-                    <Button
-                        android:id="@+id/cameraBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/camera"
-                        android:onClick="cameraActionBtn"
-                        android:text="@string/Camera"
-                        android:textColor="@android:color/holo_green_light"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints"
-                        tools:layout_editor_absoluteY="33dp" />
-
-                    <Button
-                        android:id="@+id/galleryBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/gallery"
-                        android:onClick="galleryActionBtn"
-
-                        android:text="@string/Gallery"
-                        android:textColor="@android:color/holo_green_light"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/cameraBtn"
-                        tools:ignore="MissingConstraints"
-                        tools:layout_editor_absoluteY="32dp" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
@@ -164,6 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="SaveFile"
+                    android:textColor="@android:color/holo_green_light"
                     android:id="@+id/saveFileActionBtn"
                     android:onClick="saveFileActionBtn"
                     style="?attr/borderlessButtonStyle"
@@ -172,6 +168,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Clear"
+                    android:textColor="@android:color/holo_red_light"
                     android:onClick="clearActionBtn"
                     style="?attr/borderlessButtonStyle"
                     />
