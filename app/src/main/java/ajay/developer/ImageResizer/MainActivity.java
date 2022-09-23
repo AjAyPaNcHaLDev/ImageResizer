@@ -1,4 +1,5 @@
 package ajay.developer.ImageResizer;
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
@@ -16,6 +18,13 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,11 +34,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
-import javax.net.ssl.KeyStoreBuilderParameters;
-
 import ajay.developer.Params.parms;
-import ajay.developer.backEnd.Permission;
-import ajay.developer.backEnd.Utails;
+
 import ajay.developer.backEnd.makeNewImageHandler;
 import ajay.developer.backEnd.validImageSize;
 
@@ -100,58 +106,75 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void cameraActionBtn(View view) {
-     if (Utails.isPermissionGrantedCamera(context)){
-   Log.e("TAGA", "dispatchTakePictureIntent: " );
-         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-         // Ensure that there's a camera activity to handle the intent
-         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-             Log.e("TAGA", "dispatchTakePictureIntent: inside resoleActivity," );
-             // Create the File where the photo should go
+    public void cameraActionBtn(View view ) {
 
-             try {
-                 photoFile = createImageFile();
-             } catch (IOException ex) {
-                 // Error occurred while creating the File
-                 Toast.makeText(MainActivity.this, ex.toString(), Toast.LENGTH_SHORT).show();
-                 Log.e("TAGA", "dispatchTakePictureIntent: inside resoleActivity," +ex);
-             }
-             // Continue only if the File was successfully created
-             if (photoFile != null) {
-                 Uri photoURI = FileProvider.getUriForFile(this,
-                         "ajay.developer.ImageResizer.fileprovider",
-                         photoFile);
-                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
 
-                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                     // Start the image capture intent to take photo
-                     startActivityForResult(takePictureIntent, 123);
-                 }
-             }
-         }
-         Log.e("TAGA", "dispatchTakePictureIntent: end" );
+      if(checkPermission(Manifest.permission.CAMERA)){
+          openCameraTask();
+      }
+ }
 
-     } else {
-         new Permission(context, MainActivity.this,"camera");}
+    private boolean checkPermission( String type) {
+        final boolean[] permission = {false};
+        Dexter.withContext(this)
+                .withPermission(type)
+                .withListener(new PermissionListener() {
+                    @Override public void onPermissionGranted(PermissionGrantedResponse response) {
+                        permission[0] =true;
+                    }
+                    @Override public void onPermissionDenied(PermissionDeniedResponse response) {
+                        permission[0] =false;
+                        Toast.makeText(MainActivity.this,"please allow permission form setting",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Settings.ACTION_SETTINGS));
+                    }
+                    @Override public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                        Toast.makeText(MainActivity.this,"1",Toast.LENGTH_SHORT).show();
+                        token.continuePermissionRequest();
+                    }
+                }).check();
+        return permission[0];
+    }
+
+    private void openCameraTask() {
+        Log.e("TAGA", "dispatchTakePictureIntent: " );
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            Log.e("TAGA", "dispatchTakePictureIntent: inside resoleActivity," );
+            // Create the File where the photo should go
+
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+                Toast.makeText(MainActivity.this, ex.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("TAGA", "dispatchTakePictureIntent: inside resoleActivity," +ex);
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(this,
+                        "ajay.developer.ImageResizer.fileprovider",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    // Start the image capture intent to take photo
+                    startActivityForResult(takePictureIntent, 123);
+                }
+            }
+        }
+        Log.e("TAGA", "dispatchTakePictureIntent: end" );
     }
 
     public void galleryActionBtn(View view) {
-
-
-        if (Utails.isPermissionGrantedStorage(this)){
-
+  if(checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)){
             parms.getImagePreview().setImageURI(null);
             myFileIntent  =new Intent(Intent.ACTION_GET_CONTENT);
             myFileIntent.setType("image/*");
             startActivityForResult(myFileIntent,10);
-
         }else{
-            new Permission(parms.getTempContext(), parms.getTempActivity(),"storage");
-            Toast.makeText(parms.getTempContext(),"please allow file permission to save file.", Toast.LENGTH_LONG).show();
-
+            Toast.makeText(MainActivity.this,"please allow permission",Toast.LENGTH_SHORT).show();
         }
-
-
 
     }
 

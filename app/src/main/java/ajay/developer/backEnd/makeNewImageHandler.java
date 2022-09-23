@@ -19,24 +19,9 @@ public class makeNewImageHandler extends AppCompatActivity {
       file = new File (myDir, useFilename+".jpeg");
 
         Log.e("TAGA",useFilename+"  chack file name please  and path "+ myDir);
+ makeFile(useFilename);
 
-
-
-        if (Utails.isPermissionGrantedStorage(parms.getTempContext())){
-
-            makeFile(useFilename);
-
-        }else{
-            new Permission(parms.getTempContext(), parms.getTempActivity(),"storage");
-            Toast.makeText(parms.getTempContext(),"please allow file permission to save file.", Toast.LENGTH_LONG).show();
-
-        }
-
-
-
-
-
-    }
+  }
 
     void  makeFile(String useFilename ){
         if (!myDir.exists()){
