@@ -3,5 +3,7 @@
     <string name="Camera">Camera</string>
     <string name="Gallery">Gallery</string>
     <string name="content_description_media">content_description_media</string>
+    <string name="enter_file_name">Enter File Name</string>
+    <string name="save_file">Save File</string>
 
 </resources>

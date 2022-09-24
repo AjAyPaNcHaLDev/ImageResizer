@@ -59,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
         parms.getSaveFileActionBtn().setEnabled(false);
         parms.setSeekBarQuality(findViewById(R.id.seekBarQuality));
         parms.getSeekBarQuality().setProgress(50);
-        parms.getSeekBarQuality().setVisibility(View.GONE);
 
+        parms.getSeekBarQuality().setEnabled(false);
+getSupportActionBar().hide();
         parms.getSeekBarQuality().setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
     @SuppressLint("SetTextI18n")
     @Override
@@ -195,7 +196,8 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 10 || requestCode==123) {
             if (resultCode == RESULT_OK) {
 
-                parms.getSeekBarQuality().setVisibility(View.VISIBLE);
+
+                parms.getSeekBarQuality().setEnabled(true);
                 parms.getSaveFileActionBtn().setEnabled(false);
                 parms.setTempActivity(MainActivity.this);
                 parms.setTempContext(this);

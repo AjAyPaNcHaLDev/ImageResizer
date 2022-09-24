@@ -20,8 +20,14 @@
         <entry key="..\:/Users/AjAyPaNcHaL/ImageResizer/app/src/main/res/menu/navigation_rail_menu.xml" value="0.1" />
         <entry key="..\:/Users/AjAyPaNcHaL/ImageResizer/app/src/main/res/mipmap-anydpi-v26/imagePreviewDefault.xml" value="0.1" />
         <entry key="..\:/Users/AjAyPaNcHaL/ImageResizer/app/src/main/res/xml/file_paths.xml" value="0.13991280221957986" />
+        <entry key="..\:/Users/AjAyPaNcHaL/StudioProjects/ImageResizer/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.163" />
+        <entry key="..\:/Users/AjAyPaNcHaL/StudioProjects/ImageResizer/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.161" />
+        <entry key="..\:/Users/AjAyPaNcHaL/StudioProjects/ImageResizer/app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.161" />
+        <entry key="..\:/Users/AjAyPaNcHaL/StudioProjects/ImageResizer/app/src/main/res/drawable/ic_hollowed_boxes.xml" value="0.163" />
+        <entry key="..\:/Users/AjAyPaNcHaL/StudioProjects/ImageResizer/app/src/main/res/drawable/ic_launcher_background.xml" value="0.163" />
         <entry key="..\:/Users/AjAyPaNcHaL/StudioProjects/ImageResizer/app/src/main/res/drawable/ic_sharp_account_circle_24.xml" value="0.163" />
-        <entry key="..\:/Users/AjAyPaNcHaL/StudioProjects/ImageResizer/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/AjAyPaNcHaL/StudioProjects/ImageResizer/app/src/main/res/layout-v28/activity_main.xml" value="0.140625" />
+        <entry key="..\:/Users/AjAyPaNcHaL/StudioProjects/ImageResizer/app/src/main/res/layout/activity_main.xml" value="0.29094827586206895" />
         <entry key="..\:/Users/AjAyPaNcHaL/StudioProjects/ImageResizer/app/src/main/res/layout/activity_main_backup.xml" value="0.140625" />
       </map>
     </option>
@@ -31,5 +37,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2" />
+      </ProjectState>
+    </option>
   </component>
 </project>
