@@ -121,7 +121,8 @@
                     android:id="@+id/seekBarQuality"
                     android:layout_width="340dp"
                     android:layout_height="62dp"
-                    android:layout_margin="10dp" />
+                    android:padding="15dp"
+                    android:layout_margin="20dp" />
 
                 <TextView
                     android:id="@+id/seekBarQualityLabel"
@@ -130,6 +131,13 @@
                     android:padding="8dp"
                     android:text="Select Image ."
                     android:textAlignment="center" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="list"
+                    android:textColor="@color/white"
+                    android:onClick="galleryActionListBtn"/>
             </androidx.cardview.widget.CardView>
 
 
@@ -177,6 +185,7 @@
                         android:drawableLeft="@drawable/ic_baseline_image_24"
                         android:onClick="galleryActionBtn"
                         android:text="@string/Gallery"
+                        android:textColor="@color/white"
                         android:textAllCaps="false" />
 
                 </androidx.cardview.widget.CardView>

@@ -40,12 +40,11 @@ import ajay.developer.backEnd.makeNewImageHandler;
 import ajay.developer.backEnd.validImageSize;
 
 public class MainActivity extends AppCompatActivity {
-    Context context=this;
-    Intent myFileIntent;
     String useFilename;
     Random rand = new Random();
     File   photoFile=null;
     File storageDir;
+    Intent myFileIntent;
     String currentPhotoPath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,14 +67,9 @@ getSupportActionBar().hide();
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         parms.seekBarQuality.setProgress(progress);
         new validImageSize(parms.getOriginalBitmap(),'t');
+        parms.getSeekBarQualityLabel().setText("Drag to change Size.\n"+parms.getTempFileSize()+"KB / "+parms.getFilesSize()+"KB "+parms.getSeekBarQuality( ).getProgress()+"%");
         parms.getSeekBarQualityLabel()
-                .setText("Drag to change Size.\n"+parms
-                        .getTempFileSize()+"KB / "+parms.getFilesSize()+"KB "+parms.getSeekBarQuality( ).getProgress()+"%");
-        parms.getSeekBarQualityLabel()
-                .setTextColor(Color.
-                        argb(rand.nextInt(255),
-                                rand.nextInt(255),
-                                rand.nextInt(255),rand.nextInt(255)));
+        .setTextColor(Color.argb(70,80,90,90));
         parms.getSaveFileActionBtn().setEnabled(true); }
 
     @Override
@@ -170,9 +164,11 @@ getSupportActionBar().hide();
     public void galleryActionBtn(View view) {
   if(checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)){
             parms.getImagePreview().setImageURI(null);
-            myFileIntent  =new Intent(Intent.ACTION_GET_CONTENT);
+       myFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
             myFileIntent.setType("image/*");
             startActivityForResult(myFileIntent,10);
+//      startActivity(new Intent(MainActivity.this,Gallery.class));
+
         }else{
             Toast.makeText(MainActivity.this,"please allow permission",Toast.LENGTH_SHORT).show();
         }
@@ -250,5 +246,14 @@ getSupportActionBar().hide();
     protected void onResume() {
         super.onResume();
         Log.e("TAGA","resume app");
+    }
+
+    public void galleryActionListBtn(View view) {
+        if(checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)){
+            parms.getImagePreview().setImageURI(null);
+            startActivity(new Intent(MainActivity.this,Gallery.class));
+        }else{
+            Toast.makeText(MainActivity.this,"please allow permission",Toast.LENGTH_SHORT).show();
+        }
     }
 }
