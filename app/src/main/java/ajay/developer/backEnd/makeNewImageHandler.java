@@ -1,4 +1,5 @@
 package ajay.developer.backEnd;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.widget.Toast;
@@ -13,22 +14,12 @@ import ajay.developer.Params.parms;
 
 public class makeNewImageHandler extends AppCompatActivity {
     File file ,myDir;
-    public makeNewImageHandler(String useFilename){
-
-       myDir= new File(parms.getRoot() + "/ImageResizer/");
-      file = new File (myDir, useFilename+".jpeg");
-
-        Log.e("TAGA",useFilename+"  chack file name please  and path "+ myDir);
- makeFile(useFilename);
-
-  }
-
     void  makeFile(String useFilename ){
         if (!myDir.exists()){
             try {
                 myDir.mkdirs();
             }catch (Exception e){
-                Log.e("TAGA",e+"  fnot found ");
+                Log.e("TAGA",e+"  fiLe not found ");
                 return;
             }
         }
@@ -54,6 +45,11 @@ public class makeNewImageHandler extends AppCompatActivity {
             Toast.makeText(parms.getTempContext(),useFilename+ " Saved.", Toast.LENGTH_LONG).show();
         }else Log.e("TAGA","path  found" ) ;
     }
+    public makeNewImageHandler(String useFilename, Context c){
+        myDir= new File(c.getExternalFilesDir(null) + "/ImageResizer/");
+        file = new File (myDir, useFilename+".jpeg");
+        makeFile(useFilename);
+     }
 
 
 }

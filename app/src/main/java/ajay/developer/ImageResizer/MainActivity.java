@@ -52,63 +52,71 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         parms.setFileName(findViewById(R.id.fileName));
         parms.setSeekBarQualityLabel(findViewById(R.id.seekBarQualityLabel));
-        parms.setRoot(Environment.getExternalStorageDirectory().getPath());
+//        parms.setRoot(Environment.getExternalStorageDirectory().getPath());
         parms.setSaveFileActionBtn(findViewById(R.id.saveFileActionBtn));
         parms.setImagePreview(findViewById(R.id.imagePreview));
         parms.getSaveFileActionBtn().setEnabled(false);
         parms.setSeekBarQuality(findViewById(R.id.seekBarQuality));
         parms.getSeekBarQuality().setProgress(50);
-
         parms.getSeekBarQuality().setEnabled(false);
-getSupportActionBar().hide();
+        getSupportActionBar().hide();
         parms.getSeekBarQuality().setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-    @SuppressLint("SetTextI18n")
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        parms.seekBarQuality.setProgress(progress);
-        new validImageSize(parms.getOriginalBitmap(),'t');
-        parms.getSeekBarQualityLabel().setText("Drag to change Size.\n"+parms.getTempFileSize()+"KB / "+parms.getFilesSize()+"KB "+parms.getSeekBarQuality( ).getProgress()+"%");
-        parms.getSeekBarQualityLabel()
-        .setTextColor(Color.argb(70,80,90,90));
-        parms.getSaveFileActionBtn().setEnabled(true); }
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                parms.seekBarQuality.setProgress(progress);
+                new validImageSize(parms.getOriginalBitmap(),'t');
+                parms.getSeekBarQualityLabel().setText("Drag to change Size.\n"+parms.getTempFileSize()+"KB / "+parms.getFilesSize()+"KB "+parms.getSeekBarQuality( ).getProgress()+"%");
+                parms.getSeekBarQualityLabel()
+                .setTextColor(Color.argb(70,80,90,90));
+                parms.getSaveFileActionBtn().setEnabled(true);
+            }
 
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                parms.getSeekBarQualityLabel().setTextColor(Color.argb(255, 255,0,0));
+            }
 
-
-        parms.getSeekBarQualityLabel().setTextColor(Color.argb(255, 255,0,0));
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                parms.getSeekBarQualityLabel().setTextColor(Color.argb(255, 7,70, 7));
+            }
+        });
     }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-
-        parms.getSeekBarQualityLabel().setTextColor(Color.argb(255, 7,70, 7));
-    }
-});
-    }
-
-    private File createImageFile() throws IOException {
-
-         storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image= File.createTempFile(
-                basicSetup(),  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-        // Save a file: path for use with ACTION_VIEW intents
-         currentPhotoPath = image.getAbsolutePath();
-        return image;
-
-    }
-
     public void cameraActionBtn(View view ) {
+          if(checkPermission(Manifest.permission.CAMERA)){
+              openCameraTask();
+          }
+     }
+    public void galleryActionBtn(View view) {
+        if(checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)){
+            parms.getImagePreview().setImageURI(null);
+            myFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
+            myFileIntent.setType("image/*");
+            startActivityForResult(myFileIntent,10);
+            //      startActivity(new Intent(MainActivity.this,Gallery.class));
 
+        }else{
+            Toast.makeText(MainActivity.this,"please allow permission",Toast.LENGTH_SHORT).show();
+        }
 
-      if(checkPermission(Manifest.permission.CAMERA)){
-          openCameraTask();
-      }
- }
+    }
+    public void saveFileActionBtn(View view) {
+        parms.getSaveFileActionBtn().setEnabled(false);
+        new makeNewImageHandler(basicSetup(),MainActivity.this);
 
+    }
+    public void galleryActionListBtn(View view) {
+        if(checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)){
+            parms.getImagePreview().setImageURI(null);
+            startActivity(new Intent(MainActivity.this,Gallery.class));
+        }else{
+            Toast.makeText(MainActivity.this,"please allow permission",Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void clearActionBtn(View view) {
+        parms.getSaveFileActionBtn().setEnabled(false);
+    }
     private boolean checkPermission( String type) {
         final boolean[] permission = {false};
         Dexter.withContext(this)
@@ -129,7 +137,6 @@ getSupportActionBar().hide();
                 }).check();
         return permission[0];
     }
-
     private void openCameraTask() {
         Log.e("TAGA", "dispatchTakePictureIntent: " );
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -160,30 +167,34 @@ getSupportActionBar().hide();
         }
         Log.e("TAGA", "dispatchTakePictureIntent: end" );
     }
+    private String basicSetup() {
 
-    public void galleryActionBtn(View view) {
-  if(checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)){
-            parms.getImagePreview().setImageURI(null);
-       myFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
-            myFileIntent.setType("image/*");
-            startActivityForResult(myFileIntent,10);
-//      startActivity(new Intent(MainActivity.this,Gallery.class));
-
-        }else{
-            Toast.makeText(MainActivity.this,"please allow permission",Toast.LENGTH_SHORT).show();
+        if(!parms.getFileName().getText().toString().trim().isEmpty()){
+            useFilename=parms.getFileName().getText().toString().trim();
+         }else{
+            String yyyy = new SimpleDateFormat("yyyy",
+                    Locale.getDefault()).format(new Date());
+            String mm = new SimpleDateFormat("MM",
+                    Locale.getDefault()).format(new Date());
+            String dd = new SimpleDateFormat("dd",
+                    Locale.getDefault()).format(new Date());
+            useFilename="ImageResizer_"+rand.nextInt(999)+yyyy+mm+dd;
         }
+   return useFilename;
 
     }
-
-    public void saveFileActionBtn(View view) {
-        parms.getSaveFileActionBtn().setEnabled(false);
-        new makeNewImageHandler(basicSetup());
-
+    private File createImageFile() throws IOException {
+        storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image= File.createTempFile(
+                basicSetup(),  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+        // Save a file: path for use with ACTION_VIEW intents
+        currentPhotoPath = image.getAbsolutePath();
+        Log.e("LOGA",currentPhotoPath);
+        return image;
     }
-    public void clearActionBtn(View view) {
-        parms.getSaveFileActionBtn().setEnabled(false);
-    }
-
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -191,8 +202,6 @@ getSupportActionBar().hide();
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 10 || requestCode==123) {
             if (resultCode == RESULT_OK) {
-
-
                 parms.getSeekBarQuality().setEnabled(true);
                 parms.getSaveFileActionBtn().setEnabled(false);
                 parms.setTempActivity(MainActivity.this);
@@ -226,34 +235,6 @@ getSupportActionBar().hide();
         }
     }
 
-    private String basicSetup() {
 
-        if(!parms.getFileName().getText().toString().trim().isEmpty()){
-            useFilename=parms.getFileName().getText().toString().trim();
- }else{
-            String yyyy = new SimpleDateFormat("yyyy",
-                    Locale.getDefault()).format(new Date());
-            String mm = new SimpleDateFormat("MM",
-                    Locale.getDefault()).format(new Date());
-            String dd = new SimpleDateFormat("dd",
-                    Locale.getDefault()).format(new Date());
-            useFilename="ImageResizer_"+rand.nextInt(999)+yyyy+mm+dd;
-        }
-   return useFilename;
 
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.e("TAGA","resume app");
-    }
-
-    public void galleryActionListBtn(View view) {
-        if(checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)){
-            parms.getImagePreview().setImageURI(null);
-            startActivity(new Intent(MainActivity.this,Gallery.class));
-        }else{
-            Toast.makeText(MainActivity.this,"please allow permission",Toast.LENGTH_SHORT).show();
-        }
-    }
 }

@@ -25,7 +25,7 @@ public class GalleryAdapter extends BaseAdapter {
     ArrayList<File> myImages = new ArrayList<File>();
  public GalleryAdapter(Context context) {
         this.context = context;
-     String path = Environment.getExternalStorageDirectory()+"/ImageResizer";
+     String path = context.getExternalFilesDir(null)+"/ImageResizer";
      File p=new File(path);
 File [] files=p.listFiles();
 
