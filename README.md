@@ -2,7 +2,7 @@
 <table align="center" >
  <tr  >
   <td colspan="2" align="center" > 
-    <img align="center" height="100" src="https://github.com/AjAyPaNcHaLDev/laxmi-loan/blob/main/screens-shots/logo_icon.png" alt="ajaypanchaldev" /> </td>
+    <img align="center" height="100" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/image_resizer_logo.png" alt="Image Resizer" /> </td>
  </tr> 
 </table>
  
