@@ -17,53 +17,10 @@
             android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/hii_card"
-                android:layout_width="match_parent"
-                android:layout_height="200px"
-                android:layout_margin="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:padding="80dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Image Resizer"
-                        android:textColor="#E65100"
-                        android:textSize="22dp"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <View
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_margin="15dp"
-                        android:backgroundTint="#FF5252"
-                        android:onClick="galleryActionListBtn"
-                        android:background="@drawable/gallery" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
                 android:id="@+id/imageViewCard"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:layout_below="@+id/hii_card"
+                android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
@@ -82,8 +39,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="340dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/image_resizer_logo"
-                        />
+                        android:src="@drawable/image_resizer_logo" />
 
                     <EditText
                         android:id="@+id/fileName"
@@ -162,6 +118,7 @@
                         android:drawableLeft="@drawable/ic_baseline_photo_camera_24"
                         android:onClick="cameraActionBtn"
                         android:text="Take Pic"
+                        android:textColor="@android:color/white"
                         android:textAllCaps="false" />
 
                 </androidx.cardview.widget.CardView>
@@ -202,23 +159,56 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="30dp"
         app:cardCornerRadius="20dp"
-        app:cardElevation="20dp"
-                        android:backgroundTint="#FF7043">
+        android:backgroundTint="@android:color/transparent"
+        app:cardElevation="20dp" >
 
-        <Button
-            android:id="@+id/saveFileActionBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:onClick="saveFileActionBtn"
-            android:fontFamily="serif-monospace"
-            android:textFontWeight="900"
-            android:textStyle="bold"
-            android:textColorHighlight="#00ffff"
-            android:text="@string/save_file"
-            android:textColor="#fff"
-            android:textSize="18dp"
-            android:textAllCaps="false" />
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#33691E"
+
+            >
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/baseline_save_24"
+                android:id="@+id/saveFileActionBtn"
+                android:drawableTint="@android:color/white"
+                android:onClick="saveFileActionBtn"
+                android:text="Save File"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#006064"
+
+            >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/ic_baseline_image_24"
+                android:onClick="galleryActionListBtn"
+                android:text="Images"
+                android:textColor="@color/white"
+                android:textAllCaps="false" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>

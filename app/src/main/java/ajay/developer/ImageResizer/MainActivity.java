@@ -36,7 +36,7 @@ import java.util.Random;
 
 import ajay.developer.Params.parms;
 
-import ajay.developer.backEnd.makeNewImageHandler;
+import ajay.developer.backEnd.MakeNewImageHandler;
 import ajay.developer.backEnd.validImageSize;
 
 public class MainActivity extends AppCompatActivity {
@@ -94,16 +94,22 @@ public class MainActivity extends AppCompatActivity {
             myFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
             myFileIntent.setType("image/*");
             startActivityForResult(myFileIntent,10);
-            //      startActivity(new Intent(MainActivity.this,Gallery.class));
 
         }else{
-            Toast.makeText(MainActivity.this,"please allow permission",Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,"Please allow permission",Toast.LENGTH_SHORT).show();
         }
 
     }
     public void saveFileActionBtn(View view) {
         parms.getSaveFileActionBtn().setEnabled(false);
-        new makeNewImageHandler(basicSetup(),MainActivity.this);
+        MakeNewImageHandler makeNewImageHandler=new MakeNewImageHandler();
+
+        File file=makeNewImageHandler.makeFile(basicSetup(),MainActivity.this);
+        if(file.exists()){
+            Intent i=new Intent(MainActivity.this,ImageScreen.class);
+            i.putExtra("imagePath",file.getAbsolutePath());
+            startActivity(i);
+        }
 
     }
     public void galleryActionListBtn(View view) {
