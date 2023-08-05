@@ -14,7 +14,7 @@
  
  <tr>
     <td >
-        <img align="center" src="F/screen_1.jpg" alt="screen_1"  width="200" height="400" />
+        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/screens/screen_1.jpg" alt="screen_1"  width="200" height="400" />
      </td>
     <td >
         <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/screens/screen_2.jpg" alt="screen_2"  width="200" height="400" />
