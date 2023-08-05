@@ -17,43 +17,43 @@
         <img align="center" src="F/screen_1.jpg" alt="screen_1"  width="200" height="400" />
      </td>
     <td >
-        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/tree/main/screenshots/screens/screen_2.jpg" alt="screen_2"  width="200" height="400" />
+        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/screens/screen_2.jpg" alt="screen_2"  width="200" height="400" />
      </td>
     <td >
-        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/tree/main/screenshots/screens/screen_3.jpg" alt="screen_3"  width="200" height="400" />
-     </td>
- </tr> 
-
-  <tr>
-    <td >
-        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/tree/main/screenshots/screens/screen_4.jpg" alt="screen_4"  width="200" height="400" />
-     </td>
-    <td >
-        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/tree/main/screenshots/screens/screen_5.jpg" alt="screen_5"  width="200" height="400" />
-     </td>
-    <td >
-        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/tree/main/screenshots/screens/screen_6.jpg" alt="screen_6"  width="200" height="400" />
+        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/screens/screen_3.jpg" alt="screen_3"  width="200" height="400" />
      </td>
  </tr> 
 
   <tr>
     <td >
-        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/tree/main/screenshots/screens/screen_7.jpg" alt="screen_7"  width="200" height="400" />
+        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/screens/screen_4.jpg" alt="screen_4"  width="200" height="400" />
      </td>
     <td >
-        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/tree/main/screenshots/screens/screen_8.jpg" alt="screen_8"  width="200" height="400" />
+        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/screens/screen_5.jpg" alt="screen_5"  width="200" height="400" />
      </td>
     <td >
-        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/tree/main/screenshots/screens/screen_9.jpg" alt="screen_9"  width="200" height="400" />
+        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/screens/screen_6.jpg" alt="screen_6"  width="200" height="400" />
      </td>
  </tr> 
 
   <tr>
     <td >
-        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/tree/main/screenshots/screens/screen_10.jpg" alt="screen_10"  width="200" height="400" />
+        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/screens/screen_7.jpg" alt="screen_7"  width="200" height="400" />
      </td>
     <td >
-        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/tree/main/screenshots/screens/screen_11.jpg" alt="screen_11"  width="200" height="400" />
+        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/screens/screen_8.jpg" alt="screen_8"  width="200" height="400" />
+     </td>
+    <td >
+        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/screens/screen_9.jpg" alt="screen_9"  width="200" height="400" />
+     </td>
+ </tr> 
+
+  <tr>
+    <td >
+        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/screens/screen_10.jpg" alt="screen_10"  width="200" height="400" />
+     </td>
+    <td >
+        <img align="center" src="https://github.com/AjAyPaNcHaLDev/ImageResizer/blob/main/screenshots/screens/screen_11.jpg" alt="screen_11"  width="200" height="400" />
      </td>
  </tr> 
 
